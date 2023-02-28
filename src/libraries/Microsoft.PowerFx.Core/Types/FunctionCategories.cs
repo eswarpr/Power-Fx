@@ -8,7 +8,7 @@ namespace Microsoft.PowerFx.Core.Types
 {
     [Flags]
     [TransportType(TransportKind.Enum)]
-    internal enum FunctionCategories : uint
+    public enum FunctionCategories : uint
     {
         None = 0x0,
         Text = 0x1,
