@@ -44,6 +44,26 @@ namespace Microsoft.PowerFx
         {
         }
 
+        protected CustomTexlFunction(
+            string name,
+            string description,
+            FunctionCategories functionCategories,
+            FormulaType returnType,
+            params FormulaType[] paramTypes)
+            : base(
+                DPath.Root, 
+                name,
+                name,
+                SG(description),
+                functionCategories,
+                returnType._type,
+                0,
+                paramTypes.Length,
+                paramTypes.Length,
+                Array.ConvertAll(paramTypes, p => p._type))
+        {
+        }
+
         public override bool IsSelfContained => true;
 
         public static StringGetter SG(string text)
@@ -136,7 +156,7 @@ namespace Microsoft.PowerFx
             return await result;
         }
     }
-
+    
     /// <summary>
     /// Base class for importing a C# function into Power Fx. 
     /// Dervied class should follow this convention:
