@@ -8,7 +8,9 @@ namespace Microsoft.PowerFx.Core.Types
 {
     [Flags]
     [TransportType(TransportKind.Enum)]
+#pragma warning disable CA1028
     public enum FunctionCategories : uint
+#pragma warning restore CA1028
     {
         None = 0x0,
         Text = 0x1,

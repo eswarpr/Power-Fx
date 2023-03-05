@@ -240,12 +240,14 @@ namespace Microsoft.PowerFx
             }
         }
 
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
         /// <summary>
         /// List of all errors and warnings. Check <see cref="ExpressionError.IsWarning"/>.
         /// This can include Parse, Bind, and per-engine custom errors (see <see cref="Engine.PostCheck(CheckResult)"/>, 
         /// or any custom errors passes explicit to the ctor.
         /// Not null, but empty on success.
         /// </summary>
+#pragma warning restore CS1574, CS1584, CS1581, CS1580
         public IEnumerable<ExpressionError> Errors
         {
             get => GetErrorsInLocale(null);
@@ -450,12 +452,14 @@ namespace Microsoft.PowerFx
 
         // Flag to ensure Post Checks are only invoked once. 
         private bool _invokingPostCheck;
-
+        
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
         /// <summary>
         /// Calculate all errors. 
         /// Invoke Binding and any engine-specific errors via <see cref="Engine.PostCheck(CheckResult)"/>. 
         /// </summary>
         /// <returns></returns>
+#pragma warning restore CS1574, CS1584, CS1581, CS1580
         public IEnumerable<ExpressionError> ApplyErrors()
         {
             if (!_invokingPostCheck)

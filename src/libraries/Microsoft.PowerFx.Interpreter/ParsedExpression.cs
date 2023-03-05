@@ -19,6 +19,8 @@ namespace Microsoft.PowerFx
     /// </summary>
     public interface IExpressionEvaluator
     {
+        ReadOnlySymbolValues NewFromRecordValue(RecordValue recordValue = null);
+        
         public Task<FormulaValue> EvalAsync(CancellationToken cancellationToken, IRuntimeConfig runtimeConfig = null);
     }
 
@@ -136,6 +138,9 @@ namespace Microsoft.PowerFx
                 return maxCallDepthException.ToErrorValue(_irnode.IRContext);
             }
         }
+
+        public ReadOnlySymbolValues NewFromRecordValue(RecordValue recordValue = null) =>
+            ReadOnlySymbolValues.NewFromRecord(_parameterSymbolTable, recordValue);
 
         public async Task<FormulaValue> EvalAsync(CancellationToken cancellationToken, IRuntimeConfig runtimeConfig = null)
         {
